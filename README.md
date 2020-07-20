@@ -42,6 +42,10 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 When using generic hosting support it might be needed to send messages, or perform other operations, upon endpoint startup. The `OnEndpointStarted` is designed to invoke the provided callback when the endpoint is started.
 
+## How to install
+
+The package is available on Nuget as [NServiceBus.Extensions.EndpointStarted](https://www.nuget.org/packages/NServiceBus.Extensions.EndpointStarted/)
+
 ---
 
 Icon [Call Back](https://thenounproject.com/search/?q=callback&i=1236265) by Lakshisha from the Noun Project
