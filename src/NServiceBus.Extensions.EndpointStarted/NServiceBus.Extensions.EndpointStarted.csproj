@@ -4,8 +4,37 @@
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <Authors>Mauro Servienti</Authors>
+        <Description>NServiceBus endpoint started callback extension.</Description>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageTags>NServiceBus Extensions</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <NoWarn>$(NoWarn);NU5105</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
-      <PackageReference Include="NServiceBus" Version="[7.0.0,8.0.0)" />
+        <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NServiceBus" Version="[7.0.0,8.0.0)"/>
+        <PackageReference Include="MinVer" Version="2.3.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <Target Name="AppVeyorPullRequestsTarget" AfterTargets="MinVer" Condition="'$(APPVEYOR_PULL_REQUEST_NUMBER)' != ''">
+        <PropertyGroup>
+            <PackageVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)-pr.$(APPVEYOR_PULL_REQUEST_NUMBER).build-id.$(APPVEYOR_BUILD_ID).$(MinVerPreRelease)</PackageVersion>
+            <PackageVersion Condition="'$(MinVerBuildMetadata)' != ''">$(PackageVersion)+$(MinVerBuildMetadata)</PackageVersion>
+            <Version>$(PackageVersion)</Version>
+        </PropertyGroup>
+    </Target>
 
 </Project>
