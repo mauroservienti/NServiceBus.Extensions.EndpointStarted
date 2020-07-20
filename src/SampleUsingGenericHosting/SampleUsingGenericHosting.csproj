@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NServiceBus.Extensions.EndpointStarted\NServiceBus.Extensions.EndpointStarted.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.0.1" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+﻿[assembly: System.Runtime.Versioning.TargetFramework(".NETStandard,Version=v2.0", FrameworkDisplayName="")]
+namespace NServiceBus
+{
+    public static class OnEndpointStartedEndpointConfigurationExtensions
+    {
+        public static void OnEndpointStarted(this NServiceBus.EndpointConfiguration configuration, System.Func<NServiceBus.IMessageSession, System.Threading.Tasks.Task> onEndpointStarted) { }
+    }
+}
