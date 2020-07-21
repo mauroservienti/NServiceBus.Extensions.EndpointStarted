@@ -2,7 +2,7 @@
 
 # NServiceBus.Extensions.EndpointStarted
 
-Enables to register a callback to be notified when the NServiceBus endpoints is started:
+Enables to register a callback to be notified when the NServiceBus endpoints are started:
 
 ```csharp
 var endpointConfiguration = new EndpointConfiguration("SampleEndpoint");
