@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NServiceBus.Configuration.AdvancedExtensibility;
+using NServiceBus.ObjectBuilder;
 
 namespace NServiceBus
 {
@@ -9,6 +10,12 @@ namespace NServiceBus
         internal const string NServiceBusExtensionsEndpointStartedSetting = "NServiceBus.Extensions.EndpointStarted";
 
         public static void OnEndpointStarted(this EndpointConfiguration configuration, Func<IMessageSession, Task> onEndpointStarted)
+        {
+            configuration.OnEndpointStarted((s, _) => onEndpointStarted(s));
+        }
+
+        public static void OnEndpointStarted(this EndpointConfiguration configuration,
+            Func<IMessageSession, IBuilder, Task> onEndpointStarted)
         {
             if (onEndpointStarted == null)
             {
