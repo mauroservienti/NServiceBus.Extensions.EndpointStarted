@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace NServiceBus.Extensions.EndpointStarted.AcceptanceTests
 {
+    [TestFixture]
     public class When_registering_endpoint_started
     {
         private static bool callbackInvoked;
