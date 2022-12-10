@@ -13,7 +13,13 @@ namespace NServiceBus.Extensions.EndpointStarted.Tests.API
         [MethodImpl(MethodImplOptions.NoInlining)]
         public void Approve_API()
         {
-            var publicApi = typeof(OnEndpointStartedEndpointConfigurationExtensions).Assembly.GeneratePublicApi();
+            var publicApi = typeof(OnEndpointStartedEndpointConfigurationExtensions).Assembly.GeneratePublicApi(new ApiGeneratorOptions
+            {
+                ExcludeAttributes = new[]
+                {
+                    "System.Runtime.Versioning.TargetFrameworkAttribute"
+                }
+            });
             Approvals.Verify(publicApi);
         }
     }

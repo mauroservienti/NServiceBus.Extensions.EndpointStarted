@@ -1,5 +1,4 @@
 ﻿[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/mauroservienti/NServiceBus.Extensions.EndpointStarted.git")]
-[assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v6.0", FrameworkDisplayName=".NET 6.0")]
 namespace NServiceBus
 {
     public static class OnEndpointStartedEndpointConfigurationExtensions
