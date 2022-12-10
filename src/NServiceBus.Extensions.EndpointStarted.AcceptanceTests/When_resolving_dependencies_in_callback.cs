@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using NServiceBus.AcceptanceTesting;
 using NServiceBus.Extensions.EndpointStarted.AcceptanceTests.Config;
 using NUnit.Framework;
@@ -30,12 +31,12 @@ public class When_resolving_dependencies_in_callback
         {
             configuration.RegisterComponents(c =>
             {
-                c.ConfigureComponent<SingletonService>(DependencyLifecycle.SingleInstance);
+                c.AddSingleton<SingletonService>();
             });
             configuration.OnEndpointStarted((session, builder) =>
             {
                 var testContext = r.ScenarioContext as Context;
-                testContext.ResolvedService = builder.Build<SingletonService>();
+                testContext.ResolvedService = builder.GetService<SingletonService>();
                 return Task.CompletedTask;
             });
         });

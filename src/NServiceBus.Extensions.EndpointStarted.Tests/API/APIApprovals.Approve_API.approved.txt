@@ -1,10 +1,9 @@
 ﻿[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/mauroservienti/NServiceBus.Extensions.EndpointStarted.git")]
-[assembly: System.Runtime.Versioning.TargetFramework(".NETStandard,Version=v2.0", FrameworkDisplayName="")]
 namespace NServiceBus
 {
     public static class OnEndpointStartedEndpointConfigurationExtensions
     {
         public static void OnEndpointStarted(this NServiceBus.EndpointConfiguration configuration, System.Func<NServiceBus.IMessageSession, System.Threading.Tasks.Task> onEndpointStarted) { }
-        public static void OnEndpointStarted(this NServiceBus.EndpointConfiguration configuration, System.Func<NServiceBus.IMessageSession, NServiceBus.ObjectBuilder.IBuilder, System.Threading.Tasks.Task> onEndpointStarted) { }
+        public static void OnEndpointStarted(this NServiceBus.EndpointConfiguration configuration, System.Func<NServiceBus.IMessageSession, System.IServiceProvider, System.Threading.Tasks.Task> onEndpointStarted) { }
     }
 }

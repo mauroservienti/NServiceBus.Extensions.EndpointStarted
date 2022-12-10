@@ -15,7 +15,7 @@ namespace NServiceBus
         }
 
         public static void OnEndpointStarted(this EndpointConfiguration configuration,
-            Func<IMessageSession, IBuilder, Task> onEndpointStarted)
+            Func<IMessageSession, IServiceProvider, Task> onEndpointStarted)
         {
             if (onEndpointStarted == null)
             {
