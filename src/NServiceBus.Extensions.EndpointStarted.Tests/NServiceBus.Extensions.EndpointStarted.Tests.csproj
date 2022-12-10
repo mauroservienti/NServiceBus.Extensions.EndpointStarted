@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFrameworks>net472;net6.0</TargetFrameworks>
         <IsPackable>false</IsPackable>
-        <DebugType>full</DebugType>
     </PropertyGroup>
 
     <ItemGroup>
