@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using PublicApiGenerator;
 using VerifyNUnit;
@@ -9,7 +10,7 @@ namespace NServiceBus.Extensions.EndpointStarted.Tests.API
     {
         [Test]
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public void Approve_API()
+        public Task Approve_API()
         {
             var publicApi = typeof(OnEndpointStartedEndpointConfigurationExtensions).Assembly.GeneratePublicApi(new ApiGeneratorOptions
             {
@@ -18,7 +19,7 @@ namespace NServiceBus.Extensions.EndpointStarted.Tests.API
                     "System.Runtime.Versioning.TargetFrameworkAttribute"
                 }
             });
-            Verifier.Verify(publicApi);
+            return Verifier.Verify(publicApi);
         }
     }
 }
