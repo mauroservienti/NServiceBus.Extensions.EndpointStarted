@@ -19,7 +19,7 @@ namespace NServiceBus.Extensions.EndpointStarted.Tests.API
                     "System.Runtime.Versioning.TargetFrameworkAttribute"
                 }
             });
-            return Verifier.Verify(publicApi);
+            return Verifier.Verify(publicApi.Replace(".git", ""));
         }
     }
 }
