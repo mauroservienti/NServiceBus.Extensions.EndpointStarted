@@ -1,4 +1,4 @@
-﻿[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/mauroservienti/NServiceBus.Extensions.EndpointStarted.git")]
+﻿[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/mauroservienti/NServiceBus.Extensions.EndpointStarted")]
 namespace NServiceBus
 {
     public static class OnEndpointStartedEndpointConfigurationExtensions
