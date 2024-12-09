@@ -17,6 +17,11 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <NoWarn>$(NoWarn);NU5105</NoWarn>
+        <PackageOutputPath>..\..\nugets</PackageOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <MinVerMinimumMajorMinor>3.0</MinVerMinimumMajorMinor>
     </PropertyGroup>
 
     <ItemGroup>
