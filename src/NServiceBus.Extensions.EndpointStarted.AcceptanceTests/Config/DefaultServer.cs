@@ -17,6 +17,7 @@ namespace NServiceBus.Extensions.EndpointStarted.AcceptanceTests.Config
 
             var configuration = new EndpointConfiguration(endpointConfiguration.EndpointName);
 
+            configuration.UseSerialization<SystemJsonSerializer>();
             configuration.TypesToIncludeInScan(typesToInclude);
             configuration.EnableInstallers();
 
