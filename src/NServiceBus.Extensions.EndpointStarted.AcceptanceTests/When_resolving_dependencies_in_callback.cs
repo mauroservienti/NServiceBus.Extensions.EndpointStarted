@@ -17,7 +17,7 @@ public class When_resolving_dependencies_in_callback
             .Done(c => c.EndpointsStarted)
             .Run();
 
-        Assert.NotNull(context.ResolvedService);
+        Assert.That(context.ResolvedService, Is.Not.Null);
     }
 
     class Context : ScenarioContext
