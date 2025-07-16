@@ -25,11 +25,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\"/>
+        <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="NServiceBus" Version="[9.2.3,10.0.0)"/>
+        <PackageReference Include="NServiceBus" Version="[9.2.7, 10.0.0)" />
     </ItemGroup>
     
     <ItemGroup>
