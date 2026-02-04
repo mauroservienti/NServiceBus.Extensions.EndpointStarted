@@ -29,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="NServiceBus" Version="9.2.8" />
+        <PackageReference Include="NServiceBus" Version="9.2.9" />
     </ItemGroup>
     
     <ItemGroup>
