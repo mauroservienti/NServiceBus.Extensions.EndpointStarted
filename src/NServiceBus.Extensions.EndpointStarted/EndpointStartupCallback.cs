@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using NServiceBus.Features;
-using NServiceBus.ObjectBuilder;
 
 namespace NServiceBus
 {

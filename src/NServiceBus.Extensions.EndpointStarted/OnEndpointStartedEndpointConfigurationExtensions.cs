@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NServiceBus.Configuration.AdvancedExtensibility;
-using NServiceBus.ObjectBuilder;
 
 namespace NServiceBus
 {
