@@ -1,8 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using PublicApiGenerator;
-using VerifyNUnit;
 
 namespace NServiceBus.Extensions.EndpointStarted.Tests.API
 {
@@ -10,7 +8,7 @@ namespace NServiceBus.Extensions.EndpointStarted.Tests.API
     {
         [Test]
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public Task Approve_API()
+        public void Approve_API()
         {
             var publicApi = typeof(OnEndpointStartedEndpointConfigurationExtensions).Assembly.GeneratePublicApi(new ApiGeneratorOptions
             {
@@ -19,7 +17,7 @@ namespace NServiceBus.Extensions.EndpointStarted.Tests.API
                     "System.Runtime.Versioning.TargetFrameworkAttribute"
                 }
             });
-            return Verifier.Verify(publicApi.Replace(".git", ""));
+            Approver.Verify(publicApi.Replace(".git", ""));
         }
     }
 }
