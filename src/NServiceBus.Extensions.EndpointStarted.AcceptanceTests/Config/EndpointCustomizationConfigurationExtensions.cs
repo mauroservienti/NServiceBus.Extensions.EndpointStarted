@@ -23,7 +23,7 @@ namespace NServiceBus.Extensions.EndpointStarted.AcceptanceTests.Config
 
             types = types.Union(endpointConfiguration.TypesToInclude);
 
-            return types.Where(t => !endpointConfiguration.TypesToExclude.Contains(t)).ToList();
+            return types.ToList();
         }
 
         static IEnumerable<Type> GetNestedTypeRecursive(Type rootType, Type builderType)

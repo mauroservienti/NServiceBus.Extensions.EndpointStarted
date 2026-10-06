@@ -18,26 +18,19 @@ The endpoint started callback becomes quite useful when used in combination with
 ```csharp
 public static void Main(string[] args)
 {
-    CreateHostBuilder(args).Build().Run();
+    var builder = Host.CreateApplicationBuilder(args);
+
+    var endpointConfiguration = new EndpointConfiguration("SampleEndpoint");
+    endpointConfiguration.UseTransport<A-Transport>();
+    endpointConfiguration.OnEndpointStarted(session =>
+    {
+        return Task.CompletedTask;
+    });
+
+    builder.Services.AddNServiceBusEndpoint(endpointConfiguration);
+
+    builder.Build().Run();
 }
-
-public static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
-        .UseNServiceBus(context =>
-        {
-            var endpointConfiguration = new EndpointConfiguration("SampleEndpoint");
-            endpointConfiguration.UseTransport<A-Transport>();
-            endpointConfiguration.OnEndpointStarted(session =>
-            {
-                return Task.CompletedTask;
-            });
-
-            return endpointConfiguration;
-        })
-        .ConfigureLogging((hostingContext, loggingBuilder) =>
-        {
-            loggingBuilder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-        });
 ```
 
 When using generic hosting support it might be needed to send messages, or perform other operations, upon endpoint startup. The `OnEndpointStarted` is designed to invoke the provided callback when the endpoint is started.
@@ -45,6 +38,13 @@ When using generic hosting support it might be needed to send messages, or perfo
 ## How to install
 
 The package is available on Nuget as [NServiceBus.Extensions.EndpointStarted](https://www.nuget.org/packages/NServiceBus.Extensions.EndpointStarted/)
+
+## Compatibility
+
+| NServiceBus.Extensions.EndpointStarted | NServiceBus | .NET    |
+|----------------------------------------|-------------|---------|
+| 4.x                                    | 10.x        | .NET 10 |
+| 3.x                                    | 9.x         | .NET 8  |
 
 ---
 

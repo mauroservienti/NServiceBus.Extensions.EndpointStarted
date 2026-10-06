@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NServiceBus;
 
 namespace SampleUsingGenericHosting
@@ -9,25 +8,19 @@ namespace SampleUsingGenericHosting
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var builder = Host.CreateApplicationBuilder(args);
+
+            var endpointConfiguration = new EndpointConfiguration("SampleEndpoint");
+            endpointConfiguration.UseSerialization<SystemJsonSerializer>();
+            endpointConfiguration.UseTransport<LearningTransport>();
+            endpointConfiguration.OnEndpointStarted(session =>
+            {
+                return Task.CompletedTask;
+            });
+
+            builder.Services.AddNServiceBusEndpoint(endpointConfiguration);
+
+            builder.Build().Run();
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseNServiceBus(context =>
-                {
-                    var endpointConfiguration = new EndpointConfiguration("SampleEndpoint");
-                    endpointConfiguration.UseTransport<LearningTransport>();
-                    endpointConfiguration.OnEndpointStarted(session =>
-                    {
-                        return Task.CompletedTask;
-                    });
-
-                    return endpointConfiguration;
-                })
-                .ConfigureLogging((hostingContext, loggingBuilder) =>
-                {
-                    loggingBuilder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-                });
     }
 }
